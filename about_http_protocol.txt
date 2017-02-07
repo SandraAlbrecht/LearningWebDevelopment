@@ -1,0 +1,13 @@
+Summary for HTTP protocol
+
+- The HTTP is a TCP/IP based application layer protocol that allows web-based applications to communicate and exchange data
+
+- The computers that communicate via HTTP must speak the http protocol
+
+- The http is stateless (no information are held after closing connection), connectionless (request and response are two separate connections), and can deliver any data
+
+- We use the http protocol, because it is a convenient way to quickly and reliably move data on the web
+
+- The request response cycle works on the web via http messages
+
+- A http message contains three sections, the start line(method(command that tells the server what to do -- get, post, delete, put) + URI(a set of readable characters and a way to locate the resource) + HTTP version), the headers(name: value pairs), and the body (e.g. file requested) 

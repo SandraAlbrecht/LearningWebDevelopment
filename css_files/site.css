@@ -1,0 +1,92 @@
+/*Instead of a css file I can add all of this in the html head between <style> and </style> */
+h1	{
+	color: orange;
+	font-size: 24px;
+}
+h1:hover {
+  color: blue;
+  background: grey;
+}
+p	{
+	color: blue;
+	font-size: 18px;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+.redh {
+  color:red;
+}
+.navyh {
+  color: navy;
+}
+.redb {
+  color: red;
+}
+.navyb {
+  color: navy;
+}
+.bg1 {
+  background: lime;
+}
+.bg2 {
+  background: lightgrey;
+}
+#basil {
+  color: green;
+  font-weight: bold;
+  font-size: 20px;
+}
+#carrots {
+  color: orange;
+  font-weight: bold;
+  font-size: 20px;
+}
+#banana {
+  color: yellow;
+  font-weight: bold;
+  font-size: 20px;
+}
+#willow {
+  color: brown;
+  font-weight: bold;
+  font-size: 20px;
+}
+#foodlist {
+  background:lightgrey;
+}
+table, td, th {
+  border: 1px solid blue;
+  padding: 15px;
+  text-align: center;
+}
+table, td {
+  width: 80%;
+  height: 80%;
+}
+td {
+  color: navy;
+  font-size: 14px;
+  font-weight: bold;
+  width: 33.33%;
+  height: 33.33%;
+}
+.friends {
+  color: red;
+  background: lightblue;
+}
+.vt {
+  vertical-align: top;
+}
+.vm {
+  vertical-align: middle;
+}
+.vb {
+  vertical-align: bottom;
+}
+.tc {
+  text-align: center;
+}

@@ -1,0 +1,4 @@
+- a callback function is a function that can be passed as an argument for another function 
+- usually, but not exclusively invoked after some kind of event (for example setTimeOut() ) ---> very important when writing asynchronous code
+- if no event set ---> it runs synchronously
+

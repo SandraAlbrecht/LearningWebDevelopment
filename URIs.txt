@@ -1,0 +1,12 @@
+URI, URL, URN
+
+- URI = uniform resource identifier; string of characters used to identify a resource on the internet either by name or location (original form, URL and URN to be more specific)
+
+- URL = uniform resource location; string of characters used to identify a resource on the internet either location
+
+- URN = uniform resource name; string of characters used to identify a resource on the internet either by name
+
+- URIs can specify address (URL) or the name (URN) of the resource or both at the same time; URLs mostly used
+
+- A URL consists of required components, which are the protocol (e.g. http, ftp) and the domain (e.g. www.google.com), and optional ones - port(e.g. www.google.com:80), path(e.g. /Downloads/You_Dont_Know_JS_Scope_and_Closures.pdf), query strings (e.g. watch?v=vpYct2npKD8) and fragments (to request a portion of the page e.g. #inbox) 
+

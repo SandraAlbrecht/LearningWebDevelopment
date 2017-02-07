@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+<!-- load JavaScript libraries here -->
+
+  </head>
+  <body>
+
+
+<!-- JavaScript code, typically at the end of the <body> section -->
+    <script>
+      function surprise() {
+        alert("Hello");
+      }
+      surprise();
+    </script>
+  </body>
+</html>
+
+alert () brings up a window in the browsers
+confirm () brings up a window in the browser with "OK" and "Cancel" buttons
+prompt () requests entering a value
+
+number is used for whole numbers and decimals (number1, number2 ...)
+big_number is used for e.g. 12e5
+small_number is used for e.g. 12e-5
+string means text; use for e.g. <var name="">, <var title="">, <var message="">
+a boolean value can be true or false
+
+example for using typeof
+  <script>
+    alert('"John" is type:' + typeof "John" + \n\n  //\n\n gives two lines break
+          + "3.14 is type:" + typeof 3.14 + \n\n
+          + "false is type:" + typeof false);
+  </script>
+
+
+<body onload="alert('Hello!')">
+  <p>
+    A message is shown as soon as the page is loaded.
+  </p>
+</body>
+
+Functions:
+
+1. group function e.g.
+  function do_somthing(){
+    code goes here
+  }
+2. run function
+  do_something();
+
+        Passing value to a function e.g.
+          function purchase(cats){
+            code uses 'cats'
+          }
+
+          run:
+          purchase(10);
+          adds the value of 10 to cats
+
+Function response e.g.:
+function do_something(){
+  code goes here
+  return answer;
+}
+
+result = do_somthing() will add the answer given at the end of the function
+
+
+comparing things
+< smaller than
+> greater than
+<= smaller than or equal to
+>= greater than or equal to
+== equal to
+!= not equal to
+
+examples:
+<script>
+  var user_name;
+    user_name=prompt("What is your name?");
+    if (user_name == "Sandra"){
+      alert("Great name");
+    }
+    else {
+      alert("It's not a great name")
+    }
+</script>
+
+<script>
+  var user_name;
+    user_name=prompt("What is your name?");
+    if (user_name == "Sandra"){
+      alert("Great name");
+    }
+    else if (user_name == "Noris"){
+      alert("Would you like to be called Morris?")
+    }
+</script>
+
+using switch
+examples:
+<script>
+  var user_name=prompt("What is your name?")
+    switch (user_name) {
+      case "Sandra":
+        alert("What a great name");
+          break; //break stops any more tests being made once one applies
+      case "Noris":
+        alert("Would you like to be called Morris?");
+          break;
+      default: alert("Not a great name, never mind");
+    }
+</script>
+
+<script>
+  var user_name=prompt("What is your name?")
+    switch (user_name) {
+      case "Sandra":
+      case "Noris": //if break is not used then either of the cases trigger the alert
+        alert("What a great name");
+          break;
+      case "John":
+        alert("Sorry about that");
+          break;
+      default: alert("Not a great name, never mind");
+    }
+</script>
+
+Loops (a loop repeats a code again and again)
+example for while loop:
+while loop:
+<script>
+  var money, cost, chocolates_bought;
+  money = parseInt(prompt("How much money do you have?"));
+  cost = 12;
+  chocolates_bought = 0;
+  while (money >= cost) {
+      money = money - cost;
+      chocolates_bought++;
+  }
+  alert("The cost of one chocolate is " + cost + "dollars.\n" +
+        "You've bought " + chocolates_bought + "chocolates.\n" +
+        "You have " + money + "dollars left.\n");
+</script>
+
+do ... while loop
+<script>
+  var money, cost, chocolates_bought;
+  money = parseInt(prompt("How much money do you have?"));
+  cost = 12;
+  chocolates_bought = 0;
+  do {
+   .... //before it starts the while loop it will at least once do what's between do{}
+  }
+    while (money >= cost) {
+      money = money - cost;
+      chocolates_bought++;
+  }
+  alert("The cost of one chocolate is " + cost + "dollars.\n" +
+        "You've bought " + chocolates_bought + "chocolates.\n" +
+        "You have " + money + "dollars left.\n");
+</script>
+
+Logical operators
+
+Logical AND = Logical && operator _ both inputs must be true for the result to be true, otherwise it's false
+Logical OR = Logical || operator _ both inputs need to be false for the result to be false, otherwise it's true
+Logical NOT = Logical ! oprator _ the result is the opposite of the input
+
+examples:
+
+<script>
+  var cost = 100000;
+  var want_to_go = true;
+  var years = 10;
+  var savings_per_year = 25000;
+  var total_savings;
+    total_savings = years * savings_per_year;
+    decision = want_to_go && (total_savings >= cost);
+</script>
+
+<script>
+  var like_cats = false;
+  var like_dogs = true;
+  var like_horses = false;
+  var become_a_vet;
+    become_a_vet = like_cats || like_dogs || like_horses;
+</script>
+
+<script>
+  var you_are_male = true;
+  var you_are_female = !you_are_male;
+    alert ("You are male is " + you_are_male);
+    alert("You are female is " + you_are_female);
+</script>
+
+Arrays
+
+array functions:
+[], push(), concat(), length shift(), join(), pop(), unshift()
+
+an array is a linear continous storage
+you can think of array as a group of boxes
+each box has a unique identity called index
+index of first box is 0
+
+examples
+<script>
+  var pets = ["Dog", "Cat", "Rabbit"]; //3 boxes with content
+  var pets = new Array(10); //10 empty boxes
+</script>
+
+<script>
+  var pets = ["Dog", "Cat", "Rabbit"];
+  alert (pets.join(" and ")); // shows "Dog and Cat and Rabbit"   join is separator
+  alert (pets.join()); // shows "Dog,Cat,Rabbit" join is by default ,
+  alert (pets[2]); // shows "Rabbit", because it extracts box number 2 (Dog=0, Cat=1 etc)
+  pets[2] = "Hamster"; // now pets = ["Dog", "Cat", "Hamster"], because box has been changed to Hamster
+  alert (pets.length); // shows 3, the size of the array
+  pets.push ("Hamster"); // adds Hamster at the end of the array
+  pets.unshift ("Hamster"); // adds Hamster at the start, indices automatically updated
+  var result = pets.pop(); // removes an item from the end and gives it as result; pets = ["Dog", "Cat"] now
+  var result = pets.shift(); // removes an item from the front and gives it as result; pets = ["Cat", "Rabbit"] now
+</script>
+
+combining arrays
+
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster"],
+  var primes = [2, 3, 5, 7, 11]
+  var result = pets.concat(primes); // result is ["Dog", "Cat", "Rabbit", "Hamster", 2, 3, 5, 7, 11]
+</script>
+
+
+Generating random numbers
+var random_number = Math.random(); // generates a random number between 0 and 1, not including 1
+
+example:
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      var random_number;
+      random_number = Math.random();
+      alert (random_number);
+    </script>
+  </body>
+</html>
+
+to change the range size:
+
+random_number = Math.random() * max_value; // e.g. max_value = 8, range is between 0 and 8
+Math.floor dumps the decimal place, doesn't do any rounding. 2.8 -> 2
+
+For Loops
+
+for shows start and end value in one line, good for handling a series of data
+
+examples:
+
+<script>
+  var continents = ["Australia", "Africa", "America", "Asia", "Antarctica", "Arctica", "Europe"];
+  var response, count = 0;
+    for (var index = 0; index < continents.length; index++) {
+      response = confirm("Have you been to " + continents[index] + "?");
+    if (response) count++;
+    }
+    alert("You have been to " + count + " continents!");
+</script>
+
+GIVES THE SAME RESULT AS THE FOLLOWING
+
+<script>
+  var continents = ["Australia", "Africa", "America", "Asia", "Antarctica", "Arctica", "Europe"];
+  var response, count = 0;
+  var index = 0
+    for ( ; index < continents.length; index++) {
+      response = confirm("Have you been to " + continents[index] + "?");
+    if (response) count++;
+    }
+    alert("You have been to " + count + " continents!");
+</script>
+
+MORE THAN ONE variable
+
+<script>
+  for (var rabbits = 2, generation = 1; generation <= 12; generation++, rabbits *= 2) { //between variables it's a comma not a semicolon
+    alert("gen: " + generation + "total: " + rabbits);
+  }
+</script>
+
+For ... in Loops
+
+examples:
+
+<script>
+  var continents = ["Australia", "Africa", "America", "Asia", "Antarctica", "Arctica", "Europe"];
+  var response, count = 0;
+    for (var index in continents) {
+      response = confirm("Have you been to " + continents[index] + "?");
+    if (response) count++;
+    }
+    alert("You have been to " + count + " continents!");
+</script>
+
+<script>
+  var response, count = 0;
+  var onePerson = {initials:"DR", age:40, job:"Professor"};
+    for (var property in onePerson) {
+      alert (property + "= " + onePerson[property])
+    }
+</script>
+
+This will result in "initals = DR age = 40 and job = Professor" in three different alert messages
+
+For ... of Loops
+
+examples:
+<script>
+  var continents = ["Australia", "Africa", "America", "Asia", "Antarctica", "Arctica", "Europe"];
+  var response, count = 0;
+    for (var continent of continents) {             //the actual value, e.g. "Africa", goes into the loop. here as "continent"
+      response = confirm("Have you been to " + continent + "?");
+    if (response) count++;
+    }
+    alert("You have been to " + count + " continents!");
+</script>
+
+for ( ; ; ) {
+  alert("Welcome!)
+  }
+This will show an inifnite loop, since there's no end set
+
+
+Controlling loops using "break" or "continue"
+
+examples:
+<script>
+  var total_amount = 0;
+  while (true) {    //one way to set up a never-ending loop
+  this_amount = prompt("How much in this account?");
+  this_amount = parseFloat(this_amount);
+    if (this_amount > 0)
+      total_amount += this_amount;
+    else
+      break;  //stops the loop as soon as the amount typed in is not >0 or if nothing is given
+  }
+  alert("Your total savings: " + total_amount);
+</script>
+
+continue stops the current iteration
+
+<script>
+  var year, great_years = [];
+  for (year = 2014; year <= 2016; year++) {
+    correct = confirm(year + " was great for you?");
+    if (!correct) continue; //conitnue skips the push part of the loop
+    great_years.push(year);
+  }
+  alert("You great years were: " + great_years);
+</script>
+
+
+Further array functions
+
+1.Sorting:
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster"]
+  pets.sort();    // result ["Cat", "Dog", "Hamster", "Rabbit"]
+</script>
+
+2.Reversing
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster"]
+  pets.reverse();    // result ["Hamster", "Rabbit", "Cat", "Dog"]
+</script>
+
+3.Descending order - combine sort and reverse
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster"]
+  pets.sort().reverse();    // result ["Rabbit", "Hamster", "Dog", "Cat"]
+</script>
+
+4.Finding an element
+from position 0
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster"]
+  alert(pets.indexOf("Rabbit"));    // result alert window with 2, which is the index of "Rabbit"; if target is not in the array it returns -1
+</script>
+
+from any other position
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Rabbit", "Hamster", "Horse", "Cat", "Rabbit", "Cat", "Rabbit", "Horse", "Dog", "Rabbit"]
+  var rabbitPositions = [], startSearchAt = 0;
+  do {
+    foundAt = pets.indexOf("Rabbit", startSearchAt);
+    if (foundAt != -1) {
+      rabbitPositions.push(foundAt);
+      startSearchAt = foundAt + 1;
+    }
+  } while (foundAt != -1);
+  alert(rabbitPositions);    // this shows [2, 3, 7, 9, 12]
+</script>
+
+5.Finding elements backwards
+<script>
+  var pets = ["Dog", "Rabbit", "Horse", "Cat", "Rabbit", "Hamster"]
+  alert(pets.lastIndexOf("Rabbit"));    // result alert window with 4
+</script>
+
+6.Extract parts of an Array
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster"]
+  var result = pets.slice(1));    // result is ["Cat", "Rabbit", "Hamster"], it extracted everything starting from position 1
+</script>
+
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster", "Horse", "Cat", "Rabbit", "Cat", "Rabbit", "Horse", "Dog", "Rabbit"]
+  var result = pets.slice(1, 5));    // result is ["Cat", "Rabbit", "Hamster", "Horse"], it extracted everything starting from position 1, ending at position 5, not incl
+</script>
+
+7.Remove something anywhere in the array
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster", "Horse", "Cat", "Rabbit", "Cat", "Rabbit", "Horse", "Dog", "Rabbit"]
+  var result = pets.splice(1, 5));    // now pets is ["Dog", "Rabbit", "Cat", "Rabbit", "Horse", "Dog", "Rabbit"], and result is ["Cat", "Rabbit", "Hamster", "Horse", "Cat"] it removes from position 1 to 5, incl 5
+</script>  // splice returns the removed items
+
+8.Adding something anywhere in the array
+<script>
+  var pets = ["Dog", "Cat", "Rabbit"]
+  var result = pets.splice(3, 0, "Hamster"));    // now pets is ["Dog", "Cat", "Rabbit" "Hamster"], and result is []
+</script>  // 0 tells not to replace, but to insert
+
+9.Replacing something
+<script>
+  var pets = ["Dog", "Cat", "Rabbit"]
+  var result = pets.splice(1, 1, "Hamster", "Horse"));    // now pets is ["Dog", "Hamster", "Horse", "Rabbit"], and result is ["Cat"]
+</script>  // 1 tells to replace position 1 with new items
+
+10.Combination of functions
+example
+<script>
+  var pets = ["Dog", "Cat", "Rabbit", "Hamster"];
+  var result = pets.sort().reverse()splice(1, 1, "Fish");
+  alert(pets.join(", "));
+</script> // This will show in a window: "Rabbit", "Fish", "Dog", "Cat". first it sorts, then reverses, then replaces
+
+
+11. Using forEach instead of a for or while loop
+
+example:
+with loop:
+<script>
+  var pets = ["Dog", "Cat", "Hamster"];
+  for (var i = 0; i < pets.length; i++) {
+  alert(pets[i]);
+  }
+</script>
+
+with forEach:
+<script>
+  var pets = ["Dog", "Cat", "Hamster"];
+  pets.forEach(alert));
+  }
+</script>
+
+Both show three alerts, one for each pet
+
+function forEach(theArray, fn) {
+  for(var i = 0; i < theArray.length; i++) {
+    fn(theArray[i], i, theArray);       // forEach gives back 3 information for the function
+  }
+}
+  example:
+  <script>
+    var numbers = [1, 2, 3, 4, 5];
+    numbers.forEach(function(elem, idx, arr) {
+      arr[idx] = elem * elem;   // it's directly effecting the original array
+    });
+    alert(numbers); // this shows [1, 4, 9, 16, 25]
+  </script>
+
+12.Map - similar to forEach, but doesn't change the orginal array
+
+function map(theArray, fn) {
+  var results = [];
+  for(var i = 0; i < theArray.length; i++) {
+    results.push(fn(theArray[i], i, theArray));       // every time the function gives a result it'll add to the end of the array, which is new and doesn't interfere with the original one
+  }
+  return results;
+}
+
+example:
+<script>
+  var square = function(el) {return el * el; }
+  var numbers = [1, 2, 3, 4, 5];
+  var results = numbers.map(square);
+  alert(results); // this shows [1, 4, 9, 16, 25]
+</script>

@@ -1,0 +1,405 @@
+DOM - document object model
+
+when you load something into a browser it will be converted into a DOM structure
+
+Whitespace is anything you can't see, e.g. spacing
+
+<body><p>Hello.</p> //does not have a whitespace node
+
+<body> // has a whitespace node
+  <p>Hello.</p>
+
+  code can access the following:
+  parentNode
+  childNodes[], firstChild, secondChild
+  previousSibling, nextSibling
+
+Showing a specific path of an item with javaScript
+<script>
+  function handleClick(event) {
+    event.stopPropagation();  //makes sure this is only executed once
+
+    var node = event.target
+    var thisPath = node.nodeName;
+
+    while (node.parentNode) {
+      node = parentNode;
+      thisPath = node.nodeName + " > " + thisPath;
+    }
+  alert(thisPath);
+  }
+</script>
+
+how to add this to html?
+
+function attachHandler(node) {
+  if (node == 0) return;
+  node.onClick = handleClick  //see above
+
+  for (var i = 0; i < node.childNodes.length; i++)
+    attachHandler(node.childNodes[i]);
+}
+
+we can add/delete/change/copy anything in the DOM structure
+to do so we need to access the DOM structure
+
+Method 1: Use the exact DOM path
+  hard to work out
+  easy to make mistakes
+  different browser might give different path, then code fails
+
+Method 2: Use getElementsByTagName()
+  requires to know exact tag
+  there might be several nodes of same type
+
+Method 3: Use getElementById()
+  if node has a unique name (e.g. id = ) then this is easiest way
+
+
+Common way to change things with setAttribute
+example:
+<script>
+  the_node = getElementById("thisNode");
+  the_node.setAttribute("style", "color:red");
+</script>
+
+Creating Nodes
+
+1. createElement
+example:
+result = document.createElement("div");
+
+2.for text nodes
+result = document.createTextNode("Hello");
+
+Adding created nodes into the DOM structure
+examples:
+1.
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function insert_new_text() {
+        var newItem = document.createElement("hr");
+
+        var destParent = document.getElementsByTagName("body")[0];    // 0 means, give me the first body
+        destParent.insertBefore(newItem, destParent.firstChild);
+      }
+    </script>
+  </head>
+  <body onclick="insert_new_text()">
+    <h1 id="my_text">Please click here!</h1>
+  </body>
+</html>
+
+2.
+result = document.createTextNode("This is dynamically added text");
+document.getElementById("my_text").appendChild(result);   // it adds the text node at the end of the h1 with the id "my_text"
+
+Deleting nodes from DOM
+
+example:
+<body id="theBody">
+  <p id="firstP">
+    Hello
+  </p>
+  How are you?
+  <br>
+  <p id="secondP">
+    It's a nice day!
+  </p>
+</body>
+
+there are three ways to remove the paragraph
+
+1.
+var the_node = document.getElementById("thisP");
+the_node.parentNode.removeChild(the_node);  // asks the parentNode to remove the child called this_node
+
+2.
+var the_node = document.getElementsByTagName("p")[0];   // this refers to the first paragraph
+the_node.parentNode.removeChild(the_node);
+
+3.
+var the_parent = document.getElementById("thisBody");
+the_parent.removeChild(the_parent.firstChild);
+
+deleting all children of a node:
+
+var theNode = document.getElementById("theBody");
+while (theNode.firstChild)    // while there is a child
+  theNode.removeChild(theNode.firstChild);
+
+
+Cloning nodes
+
+cloneNode() == cloneNode(false)
+
+example:
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <script>
+    function myFunction(){
+      var the_node = document.getElementById("myList").lastChild;
+      var the_clone = the_node.cloneNode(true);   // if clonNode() is used, then it copies only the list item, but not the text inside it
+      document.getElementById("myList").appendChild(the_clone);
+    }
+    </script>
+    <ul id="myList">
+      <li>Good morning</li>
+      <li>Hello</li>
+    </ul>
+    <p>Click on the button to cloneNode(true)</p>         // copies
+    <button onclick="myFunction()">Copy it!</button>    // pastes
+  </body>
+</html>
+
+
+Mouse events:
+
+onclick = when the user clicks the button       onclick = onmousedown followed immediately by onmouseup
+onmousedown = when the user presses the button
+onmouseup = when the user lets go of the button
+
+onmouseover = when the mouse is moved over an object
+onmouseout = when mouse is moved away from an object
+
+examples:
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+    function good_choice() {
+      alert("Good choice!");
+    }
+    function bad_choice() {
+      alert("I don't agree!");
+    }
+    </script>
+    <h1>Click on the best social network ...</h1>
+    <img src="facebook_icon.png" onclick="bad_choice()">
+    <img src="google_plus_icon.png" onclick="bad_choice()">
+    <img src="twitter_icon.png" onclick="good_choice()">
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+    function change_colour(new_colour) {
+      document.getElementById("myDiv");
+    }
+    </script>
+    <div id="myDiv" style="position:absolute; background:yellow; left:300; top:100; width:100; font-size:52pt" onmouseover="change">
+      Move your mouse over this...
+      Then move it out...
+    </div>
+  </body>
+</html>
+
+
+Timers - useful for dynamic webpage behaviour
+
+var the_timer;
+the_timer = setTimeout(do_something(), 1000);   // do_something() will be executed 1000 ms = 1 s later
+
+example:
+1.Alarm clock
+<html>
+  <head>
+    <script>
+      var wait_duration;
+      function set_things_up() {
+        wait_duration = prompt("How long do you want to sleep?");
+        setTimeout(show_wake_up_message, wait_duration);
+      }
+      function show_wake_up_message() {
+        alert("WAKE UP! WAKE UP! WAKE UP!")
+      }
+    </script>
+  </head>
+  <body onload="set_things_up()">
+    <h1>Alarm clock example</h1>
+  </body>
+</html>
+
+2.Moving image
+<html>
+  <head>
+    <script>
+      var the_timer, x_position = 0, the_image;
+      function set_timer() {
+        the_image = document.getElementById("stones_image");
+        x_position = x_position + 1;
+        the_image.style.left = x_position;
+        the_timer = setTimeout(set_timer, 50);
+      }
+    </script>
+  </head>
+  <body onload="set_timer()">
+    <img src="stones.png" id="stones_image" style="position:absolute; left:0"/>
+  </body>
+</html>
+
+3.Stopping a timer
+var the_timer;
+the_timer = setTimeout(do_something, 1000);
+clearTimeout(the_timer);
+
+example
+<html>
+  <head>
+    <script>
+      var the_timer, x_position = 0, the_image;
+      function set_timer() {
+        the_image = document.getElementById("stones_image");
+        x_position = x_position + 1;
+        the_image.style.left = x_position;
+        the_timer = setTimeout(set_timer, 50);
+      }
+    </script>
+  </head>
+  <body onload="set_timer()">
+    <img src="stones.png" id="stones_image" style="position:absolute; left:0"/>
+    <button onclick="clearTimeout(the_timer)">Stop!</button>
+  </body>
+</html>
+
+4.Other ways to set a timer
+var the_timer;
+the_timer = setInterval(do_something, 2000);    //it repeatedly executes the function every 2 seconds
+clearInterval(the_timer); // stops the function
+
+example
+<html>
+  <head>
+    <script>
+      var the_timer, x_position = 0, the_image;
+      function do_timer() {
+        the_image = document.getElementById("stones_image");
+        x_position = x_position + 1;
+        the_image.style.left = x_position;
+        }
+    </script>
+  </head>
+  <body onload="the_timer=setInterval(do_timer, 50)">
+    <img src="stones.png" id="stones_image" style="position:absolute; left:0"/>
+    <button onclick="clearInterval(the_timer)">Stop!</button>
+  </body>
+</html>
+
+
+Adding events
+
+example:
+1.a)
+<html>
+  <head>
+    <script>
+      function do_something(){
+        alert("Page has loaded");
+      }
+    </script>
+  </head>
+  <body onload="do_something()">
+  </body>
+</html>
+
+1.b)
+<html>
+  <body id="theBody">
+    <script>
+      function do_something(){
+        alert("Page has loaded")}
+      window.onload = do_something;
+    </script>
+  </body>
+</html>
+
+1.c)
+<html>
+  <body id="theBody">
+    <script>
+      function do_something(){
+        alert("Page has loaded")}
+      window.addEventListener("load", do_something);
+    </script>
+  </body>
+</html>
+
+if you have more than one event handler for one item, handlers are stored in an array. when an event happens all the event handlers are executed in the order they are added
+
+removing an event handler
+example
+var theBody = document.getElementById("theBody");
+theBody.removeEventListener("load", do_something);
+
+<html>
+  <body>
+    <button id="btn0" onclick=" alert('Hello')">
+      Click me!
+    </button><br>
+    <button id="btn1">
+      Remove Listener
+    </button>
+    <script>
+      function do_something(){
+        alert('Clicked')}
+      var btn0 = document.getElementById("btn0");
+      btn0.addEventListener("click", do_something);
+      var btn1 = document.getElementById("btn1");
+      btn1.addEventListener("click", function(){
+        btn0.removeEventListener("click", do_something)
+      });
+    </script>
+  </body>
+</html>
+
+Passing a function to another function
+example:
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function check(a, b) {          // function checks whether the divisor is 0.
+        if (b!=0) return true;
+        else return false;
+      }
+      function myDivide(fn, num, div ) {
+        if (fn(num, div)){
+          alert("It's okay!");
+          return num/div;
+        }
+        else {
+          alert("Not okay!");         // shows when 0 is typed as divisor
+        }
+      }
+      result = myDivide(check, 44, 1);
+    </script>
+  </head>
+</html>
+
+Returning a function from a function
+example:
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function counter() {
+        var count = 0;
+        return function() {
+          count++;
+          alert(count);
+        }
+      }
+      var count = counter();    // function is stored in a variable
+      count();                  // function is executed three times and will return "1", "2", "3"
+      count();
+      count();
+    </script>
+  </head>
+</html>

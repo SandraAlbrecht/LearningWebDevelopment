@@ -1,0 +1,7 @@
+The client server model
+
+- A client is a machine or a program that we use to make requests through the web
+
+- A server is a program that listens for our requests and responds to them
+
+- The client-server model is a centralised web architecture that classify
