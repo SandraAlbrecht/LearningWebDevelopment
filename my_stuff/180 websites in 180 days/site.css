@@ -1,0 +1,68 @@
+body {
+  font-size: 24px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.nav1 {
+  text-align: right;
+  font-size: 1.1rem;
+  font-family: "Uncial Antiqua";
+  font: black;
+  margin: 5px 0;
+  padding: 10px;
+}
+.nav1 li {
+  display: inline-block;
+  margin: 0 15px;
+}
+.nav1 a {
+  text-decoration: none;
+  color: black;
+}
+.intro {
+  font-family: "Trebuchet MS";
+  margin-left: 75px;
+  margin-right: 75px;
+}
+.intro h1 {
+  font-size: 3rem;
+  color: orange;
+}
+.intro h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+.bigOrange {
+  font-size: 2rem;
+  color: orange;
+}
+.marginTop {
+  margin-top: 20px;
+}
+.mainDiv {
+  font-family: "Trebuchet MS";
+  font-size: 1.2rem;
+  margin-left: 75px;
+}
+a:hover {
+  color: purple;
+}
+.day {
+  font-size: 1.5rem;
+  color: green;
+}
+.recipeImages {
+  margin: 20px;
+  width: 25vw;
+}
+.recipeInstr {
+  display: inline-block;
+  margin-bottom: 40px;
+  text-align: left;
+}
+.listitem {
+  font-weight: bold;
+  color: darkblue;
+}

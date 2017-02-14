@@ -1,0 +1,36 @@
+fieldset {
+  background: lightyellow;
+  border-style: solid;
+  border-color: yellow;
+  border-width: 10px;
+  width: 720px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.darkred, .purple {
+  color: white;
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+  vertical-align: top;
+}
+.darkred {
+  background: darkred;
+}
+.purple {
+  background: purple;
+}
+label {
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 180px;
+    text-align: right;
+}
+fieldset label:hover {
+  font-size: 18px;
+}
+/*input {
+  display: inline-block;
+  float: left;
+}*/
